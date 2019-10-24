@@ -1,6 +1,6 @@
 
 function down(){
-	var a = document.querySelector(".list");
+	var a = document.querySelector(".lists");
 
 	if (a.classList.contains("dropDownHide"))
 	{
@@ -12,6 +12,6 @@ function down(){
 		a.classList.add("dropDownHide");
 		}	
 }
-var button = document.querySelector(".nav-buttonsn");
+var button = document.querySelector(".nav-buttons");
 button.addEventListener("click",down);
 

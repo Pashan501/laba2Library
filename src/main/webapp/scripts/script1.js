@@ -1,17 +1,28 @@
+function down(e){
 
-function down(){
-	var a = document.querySelector(".lists");
-
-	if (a.classList.contains("dropDownHide"))
+	var child = e.target.nextElementSibling;
+	if(child==null)
+		return;
+	if (child.classList.contains("dropDownHide"))
 	{
-		a.classList.remove("dropDownHide");
-		a.classList.add("dropDownShow");
-	}else
-		if(a.classList.contains("dropDownShow")){
-			 a.classList.remove("dropDownShow");
-		a.classList.add("dropDownHide");
-		}	
+		child.classList.remove("dropDownHide");
+		child.classList.add("dropDownShow");
+	}
 }
-var button = document.querySelector(".nav-buttons");
-button.addEventListener("click",down);
+var catchTarget = document.querySelector(".wrapper");
+$(catchTarget).mouseover(down);
+
+
+function up(e){
+	var child = e.target.nextElementSibling;
+	if(child==null)
+		return;
+	if (child.classList.contains("dropDownShow"))
+	{
+		child.classList.remove("dropDownShow");
+		child.classList.add("dropDownHide");
+	}
+}
+
+$(catchTarget).mouseout(up);
 

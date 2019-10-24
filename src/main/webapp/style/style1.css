@@ -13,6 +13,9 @@ html,body
 .dropDownShow
 {
 	display:block;
+	background-color: black;
+	border:2px solid white;
+	width:80%;
 }
 .dropDownHide
 {
@@ -55,4 +58,34 @@ label
 	font-weight: bold;
 	width: 100%;
 	text-align: right;
+}
+.header-container
+{
+	margin:0;
+	padding:0;	
+}
+.wrapper
+{
+	background-color: black;
+	height: 10%;
+}
+
+.nav-buttons
+{
+	 list-style-type: none;
+	 color:white;
+}
+.lists li
+{
+	 padding-top:20px;
+	 padding-bottom: 20px;
+}
+.nav-buttons a
+{
+	color:white;
+}
+#wrapper-register-page
+{
+	margin-left: 10%;
+	margin-right: 10%;
 }

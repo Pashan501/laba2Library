@@ -1,12 +1,13 @@
 <%@include file="/WEB-INF/static/header.jsp"%>
 
 <main id ="login-main">
-	<form action="" method="post">
+	<div id="wrapper-register-page">
+		<form action="" method="post">
 		<table >
 			<br>
 			<br>
 			<br>
-			<td width="100%"><tr><em><h1>Registration</h1></em></tr></td>
+			<td><tr><em><h1>Registration</h1></em></tr></td>
 			<td>
 				<tr>
 				<br>
@@ -72,5 +73,7 @@
 			</td>
 		</table>
 	</form>
+	</div>
+	
 </main>
 <%@include file="/WEB-INF/static/footer.jsp"%>

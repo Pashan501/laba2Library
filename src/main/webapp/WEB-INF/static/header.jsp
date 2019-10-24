@@ -10,18 +10,21 @@
 		<nav>
 		<div class="wrapper">
 			<div class="container">
-				<div class="row">
+				<div class="row main-row-1">
 					<div class="col-2">
-						<img src="img/logolabrary-cover.jpg" alt="our logo library">
-					</div>
-					<div class="col-1">
-						<a class="nav-buttons">Browse</a>
+						<span class="nav-buttons">Browse</span>
 							<ul class="lists dropDownHide">
-   							<li class="nav-token"><a href="#">Facebook</a></li>
-   							<li class="twitter"><a href="#">Twitter</a></li>
-   							<li class="gplus"><a href="#">Google Plus</a></li>
-   							<li class="vk"><a href="#">ВКонтакте</a></li>
-   							<li class="rss"><a href="#">RSS</a></li>
+   							<li class="nav-buttons"><a href="#">Science</a></li>
+   							<li class="nav-buttons"><a href="#">Biographies</a></li>
+   							<li class="nav-buttons"><a href="#">Romance</a></li>
+							</ul>
+					</div>
+					<div class="col-2">
+						<span class="nav-buttons">My Books</span>
+							<ul class="lists dropDownHide">
+   							<li class="nav-buttons"><a href="#">Science</a></li>
+   							<li class="nav-buttons"><a href="#">Biographies</a></li>
+   							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
 					</div>
 					<!-- <c:if test='${user.type == "admin"}'>

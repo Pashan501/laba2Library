@@ -16,7 +16,7 @@
 					</div>
 					<div class="col-1">
 						<a class="nav-buttons">Browse</a>
-							<ul class="nav-token" class="dropDownHide">
+							<ul class="list" class="dropDownHide">
    							<li class="nav-token"><a href="#">Facebook</a></li>
    							<li class="twitter"><a href="#">Twitter</a></li>
    							<li class="gplus"><a href="#">Google Plus</a></li>

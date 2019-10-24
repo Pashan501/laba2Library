@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Registration</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../style/style1.css">
 </head>
 
-<body style="background-image:url(back.jpg)";>
+<body style="background-image:url(backgrounds.jpg)";>
 	<style type="text/css">
 		.input
 		{
@@ -80,8 +82,13 @@
 				<tr>
 				<br>
 					<div class=" input bottom" style="opacity: 1">
-						<button type="submit" name="registration" id="registration" class="larger" title="registration">Registration</button>
+						<button class="larger" type="submit" name="registration" id="registration" title="registration">Registration</button>
 					</div>
+				</tr>
+			</td>
+			<td>
+				<tr>
+					<div style="width: 100%; text-align:center;"> If you are registered, <a href="login-page.jsp">log in.</a></div>
 				</tr>
 			</td>
 		</table>

@@ -1,4 +1,4 @@
-<%@include file="WEB-INF/static/header.jsp"%>
+<%@include file="/WEB-INF/static/header.jsp"%>
 
 
 <main id="login-main">
@@ -29,11 +29,11 @@
 			</tr>
 			<tr>
 				<td>
-					<div> If you are a new user, <a href="../RegisterPage">sing up.</a></div>
+					<div> If you are a new user, <a href="../register">sing up.</a></div>
 				</td>
 			</tr>
 		</table>
 	</form>
 </main>
 
-<%@include file="WEB-INF/static/footer.jsp"%>
+<%@include file="/WEB-INF/static/footer.jsp"%>

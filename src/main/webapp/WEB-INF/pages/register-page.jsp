@@ -1,4 +1,4 @@
-<%@include file="WEB-INF/static/header.jsp"%>
+<%@include file="/WEB-INF/static/header.jsp"%>
 
 <main>
 	<form action="" method="post">
@@ -67,10 +67,10 @@
 			</td>
 			<td>
 				<tr>
-					<div > If you are registered, <a href="login-page.jsp">log in.</a></div>
+					<div > If you are registered, <a href="../login">log in.</a></div>
 				</tr>
 			</td>
 		</table>
 	</form>
 </main>
-<%@include file="WEB-INF/static/footer.jsp"%>
+<%@include file="/WEB-INF/static/footer.jsp"%>

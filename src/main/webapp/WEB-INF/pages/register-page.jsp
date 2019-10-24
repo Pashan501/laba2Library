@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/static/header.jsp"%>
 
-<main>
+<main id ="login-main">
 	<form action="" method="post">
 		<table >
 			<br>
@@ -67,7 +67,7 @@
 			</td>
 			<td>
 				<tr>
-					<div > If you are registered, <a href="../login">log in.</a></div>
+					<div > If you are registered, <a href="./login">log in.</a></div>
 				</tr>
 			</td>
 		</table>

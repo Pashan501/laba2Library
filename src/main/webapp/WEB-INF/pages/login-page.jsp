@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td>
-					<div> If you are a new user, <a href="../register">sing up.</a></div>
+					<div> If you are a new user, <a href="./register">sing up.</a></div>
 				</td>
 			</tr>
 		</table>

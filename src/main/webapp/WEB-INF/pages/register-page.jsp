@@ -3,74 +3,70 @@
 <main id ="login-main">
 	<div id="wrapper-register-page">
 		<form action="" method="post">
-		<table >
-			<br>
-			<br>
-			<br>
-			<td><tr><em><h1>Registration</h1></em></tr></td>
-			<td>
-				<tr>
-				<br>
-				<br>
-				<label for="email" >Your email address</label>
-				<div class="input" type = "text" name = "email" >
-					<input type="text" name="email" id="email" value="">
-				</div>
+		<table>
+			<tr>
+				<td>
+					<div class="titles">
+						<em><h1>Register</h1></em></tr></td>
+					</div>
+				</td>
 			</tr>
-			</td>
-			<td>
-				<tr>
+			<tr>
+				<td>
+					<label for="email" >Email</label>
+						<div class="input">
+							<input type="email" name="email" id="email" value="">
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<label for="name">Name</label>
-					<div class="input" type="text" name = "name">
-						<input type="text" name="name" id="name" value="">
+						<div class="input">
+							<input type="text" name="name" id="name" value="">
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+						<label for="Surname">Surname</label>
+						<div class="input">
+							<input type="text" name="Suname" id="Surname" value="">
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+						<label for="password">Password</label>
+						<div class="input">
+							<input type="password" name="password" id="password" value="">
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="password">Re. password</label>
+					<div class="input">
+						<input type="password" name="password" id="password" value="">
 					</div>
-				</tr>
-			</td>
-			<td>
-				<tr>
-					<label for="firstName">Surname</label>
-					<div class="input" type="text" name = "firstName">
-						<input type="text" name="firstName" id="firstName" value="">
-					</div>
-				</tr>
-			</td>
-			<td>
-				<tr>
-					<label for="password">Password</label>
-					<div class="input" type="text" name = "password">
-						<input type="text" name="password" id="password" value="">
-					</div>
-				</tr>
-			</td>
-			<td>
-				<tr>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<label for="country">Country</label>
-					<div class="input" type="text" name = "country" >
+					<div class="input">
 						<input type="text" name="country" id="country" value="">
 					</div>
 					<label for="city">City</label>
-					<div class="input" type="text" name = "city" width = "40px">
+					<div class="input">
 						<input type="text" name="city" id="city" value="">
 					</div>
 					<label for="street">Street</label>
 					<div class="input" type="text" name = "street" width = "40px">
 						<input type="text" name="street" id="street" value="">
 					</div>
-				</tr>
-			</td>
-			<td>
-				<tr>
-				<br>
-					<div class=" input bottom">
-						<button class="larger" type="submit" name="registration" id="registration" title="registration">Registration</button>
-					</div>
-				</tr>
-			</td>
-			<td>
-				<tr>
-					<div > If you are registered, <a href="./login">log in.</a></div>
-				</tr>
-			</td>
+				</td>
+			</tr>
 		</table>
 	</form>
 	</div>

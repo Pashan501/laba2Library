@@ -1,7 +1,7 @@
 <%@include file="WEB-INF/static/header.jsp"%>
 
 
-<main>
+<main id="login-main">
 
 </main>
 

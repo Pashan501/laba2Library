@@ -15,7 +15,7 @@
 						<img src="img/logolabrary-cover.jpg" alt="our logo library">
 					</div>
 					<div class="col-1">
-						<a id="socialbutton">Browse</a>
+						<a class="nav-buttons">Browse</a>
 							<ul class="nav-token" class="dropDownHide">
    							<li class="nav-token"><a href="#">Facebook</a></li>
    							<li class="twitter"><a href="#">Twitter</a></li>

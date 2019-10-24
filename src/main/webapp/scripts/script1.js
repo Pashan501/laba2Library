@@ -1,6 +1,6 @@
 
 function down(){
-var a = document.querySelector("#test");
+	var a = document.querySelector(".nav-buttons");
 
 	if (a.classList.contains("dropDownHide"))
 	{

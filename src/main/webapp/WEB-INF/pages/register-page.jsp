@@ -1,20 +1,6 @@
 <%@include file="WEB-INF/static/header.jsp"%>
 
 <main>
-	<style type="text/css">
-		.input
-		{
-			width: 180px;
-			height: 40px;
-			margin: auto;
-			opacity: .5;
-		}
-		label
-		{
-			width: 100%;
-			text-align: center;
-		}
-	</style>
 	<form action="" method="post">
 		<table >
 			<br>
@@ -74,7 +60,7 @@
 			<td>
 				<tr>
 				<br>
-					<div class=" input bottom" style="opacity: 1">
+					<div class=" input bottom">
 						<button class="larger" type="submit" name="registration" id="registration" title="registration">Registration</button>
 					</div>
 				</tr>

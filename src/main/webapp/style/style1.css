@@ -33,7 +33,9 @@ html,body
 
 #login-main
 {
-	background-image:url(img/background.jpg);
+	background-image:url(../img/backgrounds.jpg);
+	display:block;
+	height: 100%;
 }
 .input
 {

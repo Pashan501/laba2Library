@@ -1,13 +1,6 @@
 <%@include file="WEB-INF/static/header.jsp"%>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Registration</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="../style/style1.css">
-</head>
 
-<body style="background-image:url(backgrounds.jpg)";>
+<main>
 	<style type="text/css">
 		.input
 		{
@@ -88,11 +81,10 @@
 			</td>
 			<td>
 				<tr>
-					<div style="width: 100%; text-align:center;"> If you are registered, <a href="login-page.jsp">log in.</a></div>
+					<div > If you are registered, <a href="login-page.jsp">log in.</a></div>
 				</tr>
 			</td>
 		</table>
 	</form>
-</body>
-</html>
+</main>
 <%@include file="WEB-INF/static/footer.jsp"%>

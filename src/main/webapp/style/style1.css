@@ -30,3 +30,27 @@ html,body
 	width: 100%;
 	text-align: center;
 }
+
+#login-main
+{
+	background-image:url(img/background.jpg);
+}
+.input
+{
+	width: 180px;
+	height: 40px;
+	margin: auto;
+	opacity: .5;
+}
+.titles
+{
+	width: 100%;
+	text-align: center;
+
+}
+label
+{
+	font-weight: bold;
+	width: 100%;
+	text-align: right;
+}

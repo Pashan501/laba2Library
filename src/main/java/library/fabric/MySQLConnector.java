@@ -3,43 +3,26 @@ package library.fabric;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class MySQLConnector {
 	private Connection conn;
-	public MySQLConnector(Connection conn) {
-		
-		
-			
-		 
-	}
-	public MySQLConnector statement() {
-	try {
+	
+	public MySQLConnector() {	
+		ResourceBundle rb = ResourceBundle.getBundle("connection");
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (ClassNotFoundException e) {
+			Class.forName("com.mysql.jdbc.Driver");
+			this.conn = DriverManager.getConnection("jdbc:mysql://"+rb.getString("host")+"/"+rb.getString("db")+"?user="+rb.getString("user")+"&password="+rb.getString("password"));
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	} catch (InstantiationException | IllegalAccessException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		
 	}
-    System.out.println("Success");
-
- conn = null;
- try {
-		System.out.println("Obtaining connecting...");
-	    conn =
-	       DriverManager.getConnection("jdbc:mysql://localhost/?" +
-	                                   "user=root&password=");
-	    System.out.println("OK");
-
-	} catch (SQLException ex) {
-	    // handle any errors
-		System.out.println("Failed");
-	    System.out.println("SQLException: " + ex.getMessage());
-	    System.out.println("SQLState: " + ex.getSQLState());
-	    System.out.println("VendorError: " + ex.getErrorCode());
+	
+	public Connection getConnection() 
+	{
+		return this.conn;
 	}
-}return conn;
+	
 }

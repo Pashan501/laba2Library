@@ -3,21 +3,23 @@ package library.model;
 public class User {
 	private long id;
 	private String name;
-	private String firstName;
+	private String surName;
 	private String email;
 	private String country;
 	private String city;
 	private String street;
 	private String password;
+	private String type;
+	
 	public User() {
 		
 	}
-	public User(long id, String name, String firstName, String email, String country, String city, String street,
+	public User(long id, String name, String surName, String email, String country, String city, String street,
 			String password) {
 		
 		this.id = id;
 		this.name = name;
-		this.firstName = firstName;
+		this.surName = surName;
 		this.email = email;
 		this.country = country;
 		this.city = city;
@@ -36,11 +38,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getSurName() {
+		return surName;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setSurName(String firstName) {
+		this.surName = firstName;
 	}
 	public String getEmail() {
 		return email;
@@ -72,11 +74,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", firstName=" + firstName + ", email=" + email + ", country="
-				+ country + ", city=" + city + ", street=" + street + ", password=" + password + "]";
+	public String getType() {
+		return type;
 	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 
 }

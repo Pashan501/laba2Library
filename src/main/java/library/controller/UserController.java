@@ -16,23 +16,52 @@ import library.model.User;
 public class UserController {
 
 	private MySQLConnector connector;
-	private Statement statement;
+	private Statement selectStmt;
+	private Statement insertStmt;
 	private String salt = "solevoy";
 	
-	
+	//private final static String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
+		//	"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+
 	public UserController(MySQLConnector conn) 
 	{
 		this.connector = conn;
 	}
 
 	
+	public User insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
+		User user =null;
+		String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
+				"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+		
+		
+		try {
+			try {
+				insertStmt = connector.getConnection().createStatement();
+				if(insertStmt.execute(INSERT_USER)) {
+				System.out.println("Inserted successfully...");
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}finally
+		{
+			
+		}
+		
+		
+		return user;
+	}
+	
+	
 	public User getUserById(int id) 
 	{
 		User user = null;
 		String GET_USER_BY_ID = "SELECT * FROM User WHERE id="+id+";";
 		try {
-			statement = connector.getConnection().createStatement();
-			ResultSet rs= statement.executeQuery(GET_USER_BY_ID);
+			selectStmt = connector.getConnection().createStatement();
+			ResultSet rs= selectStmt.executeQuery(GET_USER_BY_ID);
 			while(rs.next()) 
 			{
 				user = new User();
@@ -59,17 +88,12 @@ public class UserController {
 //	{
 //		
 //	}
-	
-	private String hashString(String hash) {
-		MessageDigest md5 = null;
-		try {
-			md5 = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-
-			e.printStackTrace();
-		}
-		md5.update(StandardCharsets.UTF_8.encode(hash));
-		return String.format("%032x", new BigInteger(md5.digest()));
+	public String hash(String password) throws NoSuchAlgorithmException {
+		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		md5.update(StandardCharsets.UTF_8.encode(password+salt));
+		System.out.println(String.format("%032x",new BigInteger(md5.digest())));
+		return String.format("%032x",new BigInteger(md5.digest()));
 	}
+	
 	
 }

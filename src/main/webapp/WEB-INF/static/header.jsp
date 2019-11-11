@@ -11,21 +11,23 @@
 		<div class="wrapper">
 			<div class="container">
 				<div class="row main-row-1">
-					<div class="col-2">
-						<span class="nav-buttons">Browse</span>
+					<div class="col-2 choosing-nav">
+						<span class="nav-buttons">Browse
 							<ul class="lists dropDownHide">
    							<li class="nav-buttons"><a href="#">Science</a></li>
    							<li class="nav-buttons"><a href="#">Biographies</a></li>
    							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
+						</span>
 					</div>
-					<div class="col-2">
-						<span class="nav-buttons">My Books</span>
+					<div class="col-2 choosing-nav">
+						<span class="nav-buttons">My Books
 							<ul class="lists dropDownHide">
    							<li class="nav-buttons"><a href="#">Science</a></li>
    							<li class="nav-buttons"><a href="#">Biographies</a></li>
    							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
+						</span>
 					</div>
 					<!-- <c:if test='${user.type == "admin"}'>
 						

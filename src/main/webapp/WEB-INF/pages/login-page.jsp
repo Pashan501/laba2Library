@@ -15,7 +15,7 @@
 				<td>
 					<label for="email">Login</label>
 					<div class="input">
-						<input type="email" name="name" id="email" value="">
+						<input type="email" name="email" id="email" value="">
 					</div>
 				</td>
 			</tr>

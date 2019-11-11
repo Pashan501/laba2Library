@@ -3,11 +3,12 @@
 <main id ="login-main">
 	<div id="wrapper-register-page">
 		<form action="" method="post">
-		<table>
+			<div class="container-register-page">
+				<table>
 			<tr>
 				<td>
 					<div class="titles">
-						<em><h1>Register</h1></em></tr></td>
+						<em><h1>Registration</h1></em></tr></td>
 					</div>
 				</td>
 			</tr>
@@ -68,6 +69,8 @@
 				</td>
 			</tr>
 		</table>
+			</div>	
+		
 	</form>
 	</div>
 	

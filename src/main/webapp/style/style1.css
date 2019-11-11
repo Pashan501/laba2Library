@@ -91,3 +91,8 @@ label
 	margin-right: 15%;
 	background-color: white;
 }
+.container-register-page
+{
+	display:flex;
+	justify-content: center;
+}

@@ -8,6 +8,7 @@ html,body
 {
 	height: 100%;
 	width: 100%;
+	margin: 0;
 }
 
 .dropDownShow
@@ -91,8 +92,44 @@ label
 	margin-right: 15%;
 	background-color: white;
 }
+
 .container-register-page
 {
 	display:flex;
 	justify-content: center;
+}
+
+.container-fuel
+{
+	border: 1px solid;
+  	min-height: 260px;
+  	border: 0px solid;
+}
+
+.profile_img
+{
+  	overflow: hidden;
+    width: 130px;
+  	height: 180px;
+  	margin: 50px 0 0 70px;
+    border:1px solid black;
+}
+.profile_hrefs
+{
+ 	margin:100px 0 0 0;
+}
+.profile_hrefs a
+{
+	margin: 0 50px;
+	font-size: 3em;
+	text-decoration: none;
+	font-family: 'Dancing Script', cursive;
+	color: black;
+}
+.change_profile
+{
+	margin: 0 70px;
+	width: 130px;
+	height: 30px;
+>>>>>>> 986ccc65498915ce3b2fa5e213222cca0552b604
 }

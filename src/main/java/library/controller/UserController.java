@@ -17,16 +17,45 @@ import library.model.User;
 public class UserController {
 
 	private MySQLConnector connector;
+
 	private Statement statement;
 	private PreparedStatement ps;
 	private String salt = "solevoy";
 	
-	
+	//private final static String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
+		//	"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+
 	public UserController(MySQLConnector conn) 
 	{
 		this.connector = conn;
 	}
 
+	
+	public User insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
+		User user =null;
+		String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
+				"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+		
+		
+		try {
+			try {
+				ps = connector.getConnection().prepareStatement(INSERT_USER);
+				if(ps.execute(INSERT_USER)) {
+				System.out.println("Inserted successfully...");
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}finally
+		{
+			
+		}
+		
+		
+		return user;
+	}
+	
 	
 	public User getUserById(int id) 
 	{
@@ -84,10 +113,7 @@ public class UserController {
 	}
 
 	
-//	public boolean userValidate(String email, String password) 
-//	{
-//		
-//	}
+
 	
 	public User validateUser(String email, String password) throws SQLException 
 	{
@@ -115,6 +141,8 @@ public class UserController {
 		}
 		md5.update(StandardCharsets.UTF_8.encode(hash+salt));
 		return String.format("%032x", new BigInteger(md5.digest()));
+
 	}
+	
 	
 }

@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,52 +17,50 @@ import library.model.User;
 public class UserController {
 
 	private MySQLConnector connector;
-	private Statement selectStmt;
-	private Statement insertStmt;
+	private PreparedStatement ps;
+	private Statement statement;
 	private String salt = "solevoy";
 	
-	//private final static String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
-		//	"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+
 
 	public UserController(MySQLConnector conn) 
 	{
 		this.connector = conn;
 	}
 
-	
 	public User insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
 		User user =null;
-		String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
-				"VALUES ('?', '?', '?', '?','?', '?','?','?')";
 		
-		
+		String INSERT_USER = "INSERT INTO user(name,surName,email,country,city,street,password,type)"+
+				"VALUES (?,?,?,?,?,?,?,?)";
 		try {
-			try {
-				insertStmt = connector.getConnection().createStatement();
-				if(insertStmt.execute(INSERT_USER)) {
-				System.out.println("Inserted successfully...");
-				}
+			
+				ps = connector.getConnection().prepareStatement(INSERT_USER);
+				ps.setString(1, name);
+				ps.setString(2, surname);
+				ps.setString(3, email);
+				ps.setString(4, country);
+				ps.setString(5, city);
+				ps.setString(6, street);
+				ps.setString(7, pass);
+				ps.setString(8, "user");
+				ps.executeUpdate();
+			    ps.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Statement Exeption");
 			e.printStackTrace();
 		}
-		}finally
-		{
-			
-		}
-		
-		
 		return user;
 	}
 	
 	
 	public User getUserById(int id) 
-	{
+	{	statement = null;
 		User user = null;
-		String GET_USER_BY_ID = "SELECT * FROM User WHERE id="+id+";";
+		String GET_USER_BY_ID = "SELECT  user.name as \"Имя\" , user.surName as \"Фамилия\" , user.email , user.country as \"Страна\",user.city as \"Город\",user.street as \"Улица\",user.password as \"Пароль\", user.type as \"Тип Подписки\" from User WHERE id="+id+";";
 		try {
-			selectStmt = connector.getConnection().createStatement();
-			ResultSet rs= selectStmt.executeQuery(GET_USER_BY_ID);
+			statement = connector.getConnection().createStatement();
+			ResultSet rs= statement.executeQuery(GET_USER_BY_ID);
 			while(rs.next()) 
 			{
 				user = new User();

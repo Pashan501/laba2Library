@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.controller.UserController;
+import library.fabric.MySQLConnector;
+
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -86,7 +89,9 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println("Country: " + country + "</br>");
 		System.out.println("City: " + city + "</br>");
 		System.out.println("Street: " + street + "</br>");
-
+		
+		UserController uc=new UserController(new MySQLConnector()) ;
+		uc.insertUser(name, surname, email, pass, country, city, street);
 	}
 
 }}

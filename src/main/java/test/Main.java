@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 	UserController us = new UserController(new MySQLConnector());
 	
-	System.out.println(us.getUserById(1).getType());
+	System.out.println(us.getUserById(2).getType());
 	
 	}
 

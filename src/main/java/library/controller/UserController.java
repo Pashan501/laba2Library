@@ -22,8 +22,7 @@ public class UserController {
 	private PreparedStatement ps;
 	private String salt = "solevoy";
 	
-	//private final static String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
-		//	"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+	
 
 	public UserController(MySQLConnector conn) 
 	{
@@ -31,29 +30,27 @@ public class UserController {
 	}
 
 	
-	public User insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
-		User user =null;
-		String INSERT_USER = "INSERT INTO users(name,surName,email, password , name , country , city , street)"+ 
-				"VALUES ('?', '?', '?', '?','?', '?','?','?')";
+	public void insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
 		
+		String INSERT_USER = "INSERT INTO users(name,surName,email, country, city , street , password, type)"+ 
+				"VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
-			try {
-				ps = connector.getConnection().prepareStatement(INSERT_USER);
-				if(ps.execute(INSERT_USER)) {
-				System.out.println("Inserted successfully...");
-				}
+			ps = connector.getConnection().prepareStatement(INSERT_USER);
+			ps.setString(1, name);
+			ps.setString(2, surname);
+			ps.setString(3, email);
+			ps.setString(4, country);
+			ps.setString(5, city);
+			ps.setString(6, street);
+			ps.setString(7, pass);
+			ps.setString(8, "user");
+			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}finally
-		{
-			
-		}
 		
-		
-		return user;
 	}
 	
 	

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style/style1.css">
 </head>
 <body>
+	<div class = "main-wrapper">
 	<header>
 		<nav>
 		<div class="wrapper">

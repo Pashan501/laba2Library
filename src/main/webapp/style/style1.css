@@ -8,7 +8,6 @@ html,body
 {
 	height: 100%;
 	width: 100%;
-	margin: 0;
 }
 
 .dropDownShow
@@ -36,7 +35,7 @@ html,body
 	text-align: center;
 }
 
-#login-main
+#main
 {
 	background-image:url(../img/backgrounds.jpg);
 	display:block;
@@ -131,5 +130,29 @@ label
 	margin: 0 70px;
 	width: 130px;
 	height: 30px;
->>>>>>> 986ccc65498915ce3b2fa5e213222cca0552b604
+}
+
+.main-page-container
+{
+	background-color: rgb(255,255,255,0.8);
+	height: 110%;
+	display:block;
+
+}
+main
+{
+	padding-bottom: 90px;
+}
+footer
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 56px;
+	background-color: black;
+}
+.main-wrapper {
+	position: relative;
+	min-height: 100%;
 }

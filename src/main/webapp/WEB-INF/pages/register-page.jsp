@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/static/header.jsp"%>
 
-<main id ="login-main">
+<main id ="main">
 	<div id="wrapper-register-page">
 		<form action="" method="post">
 			<div class="container-register-page">

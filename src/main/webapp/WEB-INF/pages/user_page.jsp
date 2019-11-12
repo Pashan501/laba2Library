@@ -1,7 +1,7 @@
 <%@include file="/WEB-INF/static/header.jsp"%>
 
 <main>
-	<div class="container-fuel">
+	<div class="container">
 		<div class="row">
 			<div class="col-3">
 				<div class="profile_img">

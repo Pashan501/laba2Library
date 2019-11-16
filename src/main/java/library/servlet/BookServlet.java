@@ -32,6 +32,7 @@ public class BookServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		System.out.println(json);
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.write(json);

@@ -1,7 +1,6 @@
 function down(e){
 
 	var child = e.target.firstElementChild;
-	console.log(child);
 	if(child==null)
 		return;
 	
@@ -26,7 +25,7 @@ function down(e){
 }
 function up(e){
 	var child = e.target.firstElementChild;
-	console.log(child);
+
 	if(child==null)
 		return;
 

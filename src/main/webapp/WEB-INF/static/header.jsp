@@ -9,7 +9,7 @@
 	<div class = "main-wrapper">
 	<header>
 		<nav>
-		<div class="wrapper">
+		<div class="wrapper nav-wrapper">
 			<div class="container">
 				<div class="row main-row-1">
 					<div class="col-2 choosing-nav">
@@ -30,9 +30,21 @@
 							</ul>
 						</span>
 					</div>
-					<!-- <c:if test='${user.type == "admin"}'>
-						
-					</c:if> -->
+					<div class="col-6 " id = "search-wrapper" name = "search">
+						<input type="text"  id="myInput" placeholder="Search">
+					</div>
+					<c:choose>
+							<c:when test='${sessionScope.user == null}'>
+								<div class="col-2 choosing-nav">
+								<a href="" id="logIn-label">Login in</a>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<!-- <div class="col-2 choosing-nav">
+								<a href="" id="logIn-label">Login in</a>
+								</div> -->
+							</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

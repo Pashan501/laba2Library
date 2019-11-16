@@ -27,8 +27,6 @@ public class BookController {
 		String GET_ALL_BOOKS = "SELECT * FROM Books";
 		statement = connector.getConnection().createStatement();
 		ResultSet rs = statement.executeQuery(GET_ALL_BOOKS);
-		if(!rs.next()) 
-		{	
 			list = new ArrayList<>();
 			while(rs.next()) 
 			{
@@ -36,10 +34,10 @@ public class BookController {
 				String name = rs.getString(2);
 				String genre = rs.getString(3);
 				String authorName = rs.getString(4);
-				String imgSource = rs.getString(5);
-				list.add(new Book(id,name,genre,authorName,imgSource));
+				String description = rs.getString(5);
+				String imgSource = rs.getString(6);
+				list.add(new Book(id,name,genre,authorName,description,imgSource));
 			}
-		}
 		return list;
 		
 	}

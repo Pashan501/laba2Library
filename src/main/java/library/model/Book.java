@@ -6,13 +6,15 @@ public class Book {
 	private String name;
 	private String genre;
 	private String authorName;
+	private String description;
 	private String imgSource;
 	
-	public Book(int id, String name, String genre, String authorName,String imgSource) {
+	public Book(int id, String name, String genre, String authorName,String description,String imgSource) {
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 		this.authorName = authorName;
+		this.description = description;
 		this.imgSource = imgSource;
 	}
 
@@ -54,6 +56,17 @@ public class Book {
 
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
+	}
+	
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

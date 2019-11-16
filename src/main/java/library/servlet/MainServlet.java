@@ -21,6 +21,7 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("session", request.getSession());
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/main-page.jsp");
+		request.setAttribute("test", "test");
 		rd.forward(request, response);
 	}
 

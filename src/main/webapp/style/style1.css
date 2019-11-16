@@ -65,10 +65,13 @@ label
 	margin:0;
 	padding:0;	
 }
-.wrapper
+.nav-wrapper
 {
 	background-color: black;
-	height: 10%;
+	background-image : url("https://artstonegroup.ru/wp-content/uploads/2017/10/che1-1024x700.jpg");
+	height: 7%;
+	max-height: : 7%;
+	padding-bottom:60px;
 }
 
 .nav-buttons
@@ -151,6 +154,7 @@ footer
 	width: 100%;
 	height: 56px;
 	background-color: black;
+	background-image: url("https://artstonegroup.ru/wp-content/uploads/2017/10/che1-1024x700.jpg");
 }
 .main-wrapper {
 	position: relative;
@@ -183,3 +187,29 @@ footer
 	margin-bottom:40px;
 }
 
+.choosing-nav
+{
+	position: relative;
+	top:13px;
+
+}
+#search-wrapper
+{
+	margin-top:13px;
+	display: flex;
+	justify-content: center;
+}
+
+#myInput
+{
+	display:block;
+	border:1px solid black;
+	border-radius: 10px 10px 10px 10px;
+	padding: 12px 0 12px 20px;
+	width:60%;
+	height: 30px
+}
+#logIn-label
+{
+	color:white;
+}

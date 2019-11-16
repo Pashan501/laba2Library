@@ -11,12 +11,4 @@
 		</div>
 	</div>
 </main>
-<script src = "scripts/BookView.js"></script>
-<script>
-	console.log(document.querySelector(".row.first-row-in-main-page"));
-	window.BookView.render({name:"HUY",imgSource:"img/logolabrary-cover.jpg"},document.querySelector(".row.first-row-in-main-page"));
-	window.BookView.render({name:"HUY",imgSource:"img/logolabrary-cover.jpg"},document.querySelector(".row.first-row-in-main-page"));
-	window.BookView.render({name:"HUY",imgSource:"img/logolabrary-cover.jpg"},document.querySelector(".row.first-row-in-main-page"));
-	 window.BookView.render({name:"HUY",imgSource:"img/logolabrary-cover.jpg"},document.querySelector(".row.first-row-in-main-page"));
-</script>
 <%@include file="/WEB-INF/static/footer.jsp"%>

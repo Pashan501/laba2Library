@@ -236,3 +236,28 @@ footer
 	margin-bottom: -1px;
 	zoom: 1;
 }
+#user-view-in-header
+{
+	color:white;
+	display:flex;
+	justify-content: space-evenly;
+}
+#user-view-name
+{
+	margin:0;
+	font-size:20px;
+}
+.logout-value
+{
+	font-size:20px;
+	position: relative;;
+	top:5px;
+}
+.logout-button:link
+{
+	color:blue;
+}
+.logout-button:visited
+{
+	color:blue;
+}

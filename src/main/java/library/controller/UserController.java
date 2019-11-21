@@ -1,6 +1,7 @@
 package library.controller;
 
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.servlet.http.HttpSession;
 
 import library.fabric.MySQLConnector;
 import library.model.User;
@@ -129,6 +131,14 @@ public class UserController {
 		return user;
 		
 	}
+	
+	public static void invalidateUser(HttpSession session)
+	{
+			if (session != null) {
+				session.invalidate();
+		}else
+			return;
+	} 
 	
 	private String hashString(String hash) {
 		MessageDigest md5 = null;

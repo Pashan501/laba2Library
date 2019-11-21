@@ -92,6 +92,13 @@ public class RegisterServlet extends HttpServlet {
 		
 		UserController uc=new UserController(new MySQLConnector()) ;
 		uc.insertUser(name, surname, email, pass, country, city, street);
+		if(uc.US=="Success") {
+			request.getRequestDispatcher("/Home");
+		}
+		if(uc.US=="ERROR") {
+			request.getRequestDispatcher("/Regen");
+		}
+		
 	}
 
 }}

@@ -66,6 +66,9 @@
 					<div class="input" type="text" name = "street" width = "40px">
 						<input type="text" name="street" id="street" value="">
 					</div>
+					<div class="input">
+						<input type="submit"  value="register">
+					</div>
 				</td>
 			</tr>
 		</table>

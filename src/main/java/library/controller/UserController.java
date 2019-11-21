@@ -19,7 +19,7 @@ public class UserController {
 	private MySQLConnector connector;
 	private PreparedStatement ps;
 	private Statement statement;
-	
+	public String US;
 	private String salt = "solevoy";
 	
 
@@ -29,11 +29,11 @@ public class UserController {
 		this.connector = conn;
 	}
 
-	public User insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
-		User user =null;
+	public void insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
 		
+	
 		String INSERT_USER = "INSERT INTO user(name,surName,email,country,city,street,password,type)"+
-				"VALUES (?,?,?,?,?,?,?,?)";
+				" VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			
 				ps = connector.getConnection().prepareStatement(INSERT_USER);
@@ -46,12 +46,15 @@ public class UserController {
 				ps.setString(7, pass);
 				ps.setString(8, "user");
 				ps.executeUpdate();
+				US="Success";
 			    ps.close();
+			
 		} catch (SQLException e) {
 			System.out.println("Statement Exeption");
+			US="ERROR";
 			e.printStackTrace();
 		}
-		return user;
+		
 	}
 	
 	

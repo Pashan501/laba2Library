@@ -36,7 +36,7 @@
 					<c:choose>
 							<c:when test='${sessionScope.user == null && sessionScope.admin == null}'>
 								<div class="col-2 choosing-nav">
-								<a href="/Laba2Library/login" id="logIn-label">Login in</a>
+								<a href="/Laba2Library/login" id="logIn-label">Log in</a>
 								</div>
 							</c:when>
 							<c:otherwise>

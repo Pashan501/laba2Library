@@ -68,6 +68,18 @@
 					</div>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<div class="input">
+						<input type="submit" class="submit" value = "Send">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div> If you are registered, please<a href="./login"> Sign in.</a></div>
+				</td>
+			</tr>
 		</table>
 			</div>	
 		

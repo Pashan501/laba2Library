@@ -8,6 +8,11 @@
     <script src="scripts/BookList.js"></script>
 <script src = "scripts/BookView.js"></script>
 <script src ="scripts/BookListView.js"></script>
+<!-- <c:choose>
+	<c:when test="${sessionScope.admin = null}">
+		
+	</c:when>
+</c:choose> -->
 <script>
 	
 	// window.BookList.getAllBooks.then(function(fullfiled){window.BookList.listBooks = fullfiled},function(error){console.log("error")});

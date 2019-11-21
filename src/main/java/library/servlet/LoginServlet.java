@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("session", request.getSession());
-		
+		request.setAttribute("errorLogin", false);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/login-page.jsp");
 		rd.forward(request, response);
 	}

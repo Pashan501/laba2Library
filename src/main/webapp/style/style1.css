@@ -23,13 +23,6 @@ html,body
 {
 	display:none;
 }
-.input
-{
-	width: 180px;
-	height: 40px;
-	margin: auto;
-	opacity: .5;
-}
 .titles
 {
 	width: 100%;
@@ -46,7 +39,6 @@ html,body
 	width: 180px;
 	height: 40px;
 	margin: auto;
-	opacity: .5;
 }
 .titles
 {
@@ -212,4 +204,35 @@ footer
 #logIn-label
 {
 	color:white;
+}
+#login-main
+{
+	display:flex;
+	justify-content: center;
+	align-items: center
+}
+#login-form
+{
+	display:block;
+	position: relative;
+	bottom:10%;
+}
+
+.submit {
+	cursor: pointer;
+	border: 1px solid #cecece;
+	background: #f6f6f6;
+	border-radius: 8px;
+	width: 100px;
+	height: 30px;
+	position: relative;
+	left:25%;
+}
+.submit:hover {
+	box-shadow: inset 0px -20px 20px #ffffff;
+}
+.submit:active {
+	margin-top: 1px;
+	margin-bottom: -1px;
+	zoom: 1;
 }

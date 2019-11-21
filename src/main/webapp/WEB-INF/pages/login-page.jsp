@@ -1,8 +1,7 @@
 <%@include file="/WEB-INF/static/header.jsp"%>
-
-
-<main id="main">
-	<form action="" method="post">
+	<main id="main">
+	<div class="container main-page-container" id="login-main">
+		 <form action="" method="post" id= "login-form">
 		<table>
 			<tr>
 				<td>
@@ -29,11 +28,26 @@
 			</tr>
 			<tr>
 				<td>
-					<div> If you are a new user, <a href="./register">sing up.</a></div>
+					<div class="input">
+						<input type="submit" class="submit" value = "Send">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div> If you are a new user, please<a href="./register"> Sing up.</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<c:if test="${errorLogin == true}">
+						<p style="color:red">sorry, wrong data</p>
+					</c:if>
 				</td>
 			</tr>
 		</table>
 	</form>
+	</div>
 </main>
 
 <%@include file="/WEB-INF/static/footer.jsp"%>

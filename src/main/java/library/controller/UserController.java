@@ -84,7 +84,7 @@ public class UserController {
 	public User getUserByEmail(String email) 
 	{
 		User user = null;
-		String GET_USER_BY_EMAIL = "SELECT * FROM User WHERE email="+email+";";
+		String GET_USER_BY_EMAIL = "SELECT * FROM user WHERE email='"+email+"';";
 		try {
 			statement = connector.getConnection().createStatement();
 			ResultSet rs= statement.executeQuery(GET_USER_BY_EMAIL);
@@ -119,9 +119,11 @@ public class UserController {
 		ps = connector.getConnection().prepareStatement(GET_USER_BY_EMAIL_AND_PASSWORD);
 		ps.setString(1, email);
 		ps.setString(2, hashString(password));
+		System.out.println(hashString(password));
 		ResultSet rs = ps.executeQuery();
-		if(rs.isFirst()) 
+		while(rs.next()) 
 		{
+			System.out.println("PROVERKA");
 			user = getUserByEmail(rs.getString(1));
 		}
 		return user;

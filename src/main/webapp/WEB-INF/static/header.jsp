@@ -40,9 +40,9 @@
 								</div>
 							</c:when>
 							<c:otherwise>
-								<!-- <div class="col-2 choosing-nav">
-								<a href="" id="logIn-label">Login in</a>
-								</div> -->
+								<div class="col-2 choosing-nav">
+									HELLO ${sessionScope.user.type}
+								</div>
 							</c:otherwise>
 					</c:choose>
 				</div>

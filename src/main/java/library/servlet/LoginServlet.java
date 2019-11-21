@@ -51,13 +51,12 @@ public class LoginServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			response.sendRedirect(request.getContextPath());
-			System.out.println(user);
-			return;
+			response.sendRedirect(request.getContextPath()+"/MainServlet");
+		}else 
+		{
+			request.setAttribute("errorLogin", true);
+			rd.forward(request, response);
 		}
-		
-		request.setAttribute("errorLogin", true);
-		rd.forward(request, response);
 		
 		
 	}

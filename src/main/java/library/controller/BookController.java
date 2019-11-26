@@ -6,26 +6,53 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import library.fabric.MySQLConnector;
 import library.model.Book;
 
 public class BookController {
 
+	@Autowired
 	private MySQLConnector connector;
 
 	private Statement statement;
 	private PreparedStatement ps;
 	
-	public BookController(MySQLConnector connector) 
+	public BookController() 
 	{
-		this.connector = connector;
+		
 	}
 	
+	public MySQLConnector getConnector() {
+		return connector;
+	}
+
+	public void setConnector(MySQLConnector connector) {
+		this.connector = connector;
+	}
+
+	public Statement getStatement() {
+		return statement;
+	}
+
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+
+	public PreparedStatement getPs() {
+		return ps;
+	}
+
+	public void setPs(PreparedStatement ps) {
+		this.ps = ps;
+	}
+
 	public ArrayList<Book> getAllBooks() throws SQLException
 	{
 		ArrayList<Book>  list = null;
 		String GET_ALL_BOOKS = "SELECT * FROM Books";
-		statement = connector.getConnection().createStatement();
+		statement = connector.getDataSource().getConnection().createStatement();
 		ResultSet rs = statement.executeQuery(GET_ALL_BOOKS);
 			list = new ArrayList<>();
 			while(rs.next()) 

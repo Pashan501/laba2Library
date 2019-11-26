@@ -6,6 +6,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import config.ControllerConfig;
 import library.controller.BookController;
 import library.controller.UserController;
 import library.fabric.MySQLConnector;
@@ -27,20 +33,24 @@ public class Main {
 //	}
 		
 		
-		MessageDigest md5 = null;
-		String str = "";
-		try {
-			md5 = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-
-			e.printStackTrace();
-		}
-		md5.update(StandardCharsets.UTF_8.encode("adminsolevoy"));
-		str =  String.format("%032x", new BigInteger(md5.digest()));
-		UserController us = new UserController(new MySQLConnector());
+//		MessageDigest md5 = null;
+//		String str = "";
+//		try {
+//			md5 = MessageDigest.getInstance("MD5");
+//		} catch (NoSuchAlgorithmException e) {
+//
+//			e.printStackTrace();
+//		}
+//		md5.update(StandardCharsets.UTF_8.encode("adminsolevoy"));
+//		str =  String.format("%032x", new BigInteger(md5.digest()));
 		
-			User user = us.getUserByEmail("daniel.protsak@gmail.com");
-			System.out.println(user.getType());
+		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
+		//UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("userController");
+		UserController uc= (UserController) ac.getBean("controllerUser");
+		System.out.println(uc.getUserById(1).getType());
+		
+//			User user = us.getUserByEmail("daniel.protsak@gmail.com");
+//			System.out.println(user.getType());
 	
 	}
 

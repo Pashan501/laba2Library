@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>
-					<div> If you are a new user, please<a href="./register"> Sing up.</a></div>
+					<div> If you are a new user, please<a href="./register"> Sign up.</a></div>
 				</td>
 			</tr>
 			<tr>

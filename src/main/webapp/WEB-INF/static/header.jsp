@@ -16,7 +16,7 @@
 					<div class="col-2 choosing-nav">
 						<span class="nav-buttons">Browse
 							<ul class="lists dropDownHide">
-   							<li class="nav-buttons"><a href="#">Science</a></li>
+   							<li class="nav-buttons"><a href="/Laba2Library/Max/MainPage.php">All Books</a></li>
    							<li class="nav-buttons"><a href="#">Biographies</a></li>
    							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
@@ -25,7 +25,7 @@
 					<div class="col-2 choosing-nav">
 						<span class="nav-buttons">My Books
 							<ul class="lists dropDownHide">
-   							<li class="nav-buttons"><a href="#">Science</a></li>
+   							<li class="nav-buttons"><a href="#">Penis</a></li>
    							<li class="nav-buttons"><a href="#">Biographies</a></li>
    							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
@@ -35,16 +35,19 @@
 						<input type="text"  id="myInput" placeholder="Search">
 					</div>
 					<c:choose>
-							<c:when test='${sessionScope.user == null && sessionScope.admin == null}'>
-								<div class="col-2 choosing-nav">
-								<a href="/Laba2Library/login" id="logIn-label">Log in</a>
+							<c:when test='${sessionScope.user == null}'>
+								<div class="col-1 choosing-nav">
+								<a href="/Laba2Library/Max/Login.php" class="login-and-register-label">Log in</a>
+								</div>
+								<div class="col-1 choosing-nav">
+								<a href="#" class="login-and-register-label">Register</a>
 								</div>
 							</c:when>
 							<c:otherwise>
-								<div class="col-2 choosing-nav">
+								<div class="col-1 choosing-nav">
 									<span id="user-view-in-header">
 										<p id= "user-view-name">${sessionScope.user.type}</p> 
-									<a href="MainServlet?logout=1" id="logout-button"><i class="fas fa-sign-out-alt logout-value"></i></a>
+									<a href="/Laba2Library/Max/Logout.php?logout=1" id="logout-button"><i class="fas fa-sign-out-alt logout-value"></i></a>
 									</span>
 								</div>
 							</c:otherwise>

@@ -16,7 +16,7 @@
 				<td>
 					<label for="email" >Email</label>
 						<div class="input">
-							<input type="email" name="email" id="email" value="">
+							<input type="email" name="email" id="email" value="${email}">
 						</div>
 				</td>
 			</tr>
@@ -24,7 +24,7 @@
 				<td>
 					<label for="name">Name</label>
 						<div class="input">
-							<input type="text" name="name" id="name" value="">
+							<input type="text" name="name" id="name" value="${name}">
 						</div>
 				</td>
 			</tr>
@@ -32,7 +32,7 @@
 				<td>
 						<label for="Surname">Surname</label>
 						<div class="input">
-							<input type="text" name="Suname" id="Surname" value="">
+							<input type="text" name="surName" id="Surname" value="${surName}">
 						</div>
 				</td>
 			</tr>
@@ -48,7 +48,7 @@
 				<td>
 					<label for="password">Re. password</label>
 					<div class="input">
-						<input type="password" name="password" id="password" value="">
+						<input type="password" name="rePassword" id="password" value="">
 					</div>
 				</td>
 			</tr>
@@ -56,15 +56,15 @@
 				<td>
 					<label for="country">Country</label>
 					<div class="input">
-						<input type="text" name="country" id="country" value="">
+						<input type="text" name="country" id="country" value="${country}">
 					</div>
 					<label for="city">City</label>
 					<div class="input">
-						<input type="text" name="city" id="city" value="">
+						<input type="text" name="city" id="city" value="${city}">
 					</div>
 					<label for="street">Street</label>
 					<div class="input" type="text" name = "street" width = "40px">
-						<input type="text" name="street" id="street" value="">
+						<input type="text" name="street" id="street" value="${street}">
 					</div>
 				</td>
 			</tr>

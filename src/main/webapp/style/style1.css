@@ -204,7 +204,12 @@ footer
 	width:60%;
 	height: 30px
 }
-#logIn-label
+.login-and-register-label
+{
+	color:white;
+}
+
+.login-and-register-label:visited
 {
 	color:white;
 }

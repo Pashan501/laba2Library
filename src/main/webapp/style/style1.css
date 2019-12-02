@@ -248,7 +248,7 @@ footer
 {
 	color:white;
 	display:flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 }
 #user-view-name
 {
@@ -268,4 +268,10 @@ footer
 .logout-button:visited
 {
 	color:blue;
+}
+.grateful-for-register
+{
+	height: 100%;
+	text-align: center;
+	padding-top: 250px;
 }

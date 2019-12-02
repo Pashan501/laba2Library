@@ -2,6 +2,7 @@
 
 <main id ="main">
 	<div id="wrapper-register-page">
+	<c:if  test = "${form}">
 		<form action="" method="post">
 			<div class="container-register-page">
 				<table>
@@ -77,6 +78,13 @@
 			</tr>
 			<tr>
 				<td>
+					<c:if test="${error == true}">
+						<p style="color:red">sorry, wrong data</p>
+					</c:if>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<div> If you are registered, please<a href="./login"> Sign in.</a></div>
 				</td>
 			</tr>
@@ -84,6 +92,21 @@
 			</div>	
 		
 	</form>
+		</c:if>
+		<c:if test = "${form == false}">
+			<script>
+				var wrapperRegister = document.querySelector("#wrapper-register-page");
+				var newDiv = document.createElement("div");
+				newDiv.classList.add("grateful-for-register");
+				var paragraph = document.createElement("p");
+				paragraph.textContent = "Thank you for your register";
+				newDiv.appendChild(paragraph);
+				wrapperRegister.appendChild(newDiv);
+				setTimeout(function(){
+					window.location.replace("/Laba2Library/Max/MainPage.php");
+					},1500);
+			</script>
+		</c:if>
 	</div>
 	
 </main>

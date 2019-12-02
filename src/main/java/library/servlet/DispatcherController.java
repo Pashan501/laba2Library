@@ -1,6 +1,7 @@
 package library.servlet;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,16 +35,34 @@ public class DispatcherController {
 	
 	
 	@GetMapping(value = "/Login")
-	public String loginGetWithParam(ModelMap mp)
+	public String loginGet(ModelMap mp)
 	{
 		mp.addAttribute("session",getSession());
+		mp.addAttribute("errorLogin",false);
 		return "login-page";
+	}
+	
+	@PostMapping(value = "/Login",params = {"email","password"})
+	public String loginPost(ModelMap mp,@RequestParam("email")String email,@RequestParam("password")String password,HttpServletRequest request) throws SQLException 
+	{
+		dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
+		String page = "login-page";
+		User user = ((UserController) dbContext.getBean("controllerUser")).validateUser(email, password);
+		if(user != null) 
+		{
+			HttpSession session = getSession();
+			session.setAttribute("user", user);
+			page = "redirect:/Max/MainPage.php";
+		}else 
+			mp.addAttribute("errorLogin",true);
+		return page;
 	}
 	
 	@GetMapping("/Register")
 	public String registerGet(ModelMap mp) 
 	{
 		mp.addAttribute("session",getSession());
+		mp.addAttribute("form",true);
 		return "register-page";
 	}
 	
@@ -57,27 +76,71 @@ public class DispatcherController {
 			@RequestParam(name="street",required=false) String street) 
 	{
 		
-		
-		return "register-page";
-	}
-	@PostMapping(value = "/Login",params = {"email","password"})
-	public String loginPost(ModelMap mp,@RequestParam("email")String email,@RequestParam("password")String password,HttpServletRequest request) throws SQLException 
-	{
-		dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
-		String page = "login-page";
-		User user = ((UserController) dbContext.getBean("controllerUser")).validateUser(email, password);
-		if(user != null) 
+		boolean error = false;
+		boolean form = true;
+		if(email != null) 
 		{
-			HttpSession session = getSession();
-			session.setAttribute("user", user);
-			page = "redirect:/Max/MainPage.php";
+			if(email.length() == 0) 
+			{
+				error = true;
+			}
+			
+			if(name.length() == 0) 
+			{
+				error = true;
+			}
+			if(surName.length() == 0) 
+			{
+				error = true;
+			}
+			
+			if(password.length() == 0) 
+			{
+				error = true;
+			}
+			if(rePassword.length() == 0) 
+			{
+				error = true;
+			}
+			
+			if(country.length() == 0) 
+			{
+				error = true;
+			}
+			
+			if(city.length() == 0) 
+			{
+				error = true;
+			}
+			if(street.length() == 0) 
+			{
+				error = true;
+			}
+		}
+		
+		if(error) 
+		{
+			mp.addAttribute("email",email);
+			mp.addAttribute("name",name);
+			mp.addAttribute("surName",surName);
+			mp.addAttribute("country",country);
+			mp.addAttribute("city",city);
+			mp.addAttribute("street",street);
+			mp.addAttribute("error",error);
 		}else 
 		{
-			String errorLogin = "Wrong data";
-			mp.addAttribute("errorLogin",errorLogin);
+			if(dbContext == null)
+				dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
+			UserController uc = (UserController) dbContext.getBean("controllerUser");
+			uc.insertUser(name,surName, email, country, city, street, password);
+			form = false;
+			mp.addAttribute("form",form);
 		}
-		return page;
+		
+		mp.addAttribute("error",error);
+		return "register-page";
 	}
+	
 	
 	@GetMapping("/MainPage")
 	public String mainPageGet(ModelMap mp) 

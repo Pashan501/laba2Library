@@ -1,6 +1,7 @@
 package test;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,6 +14,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+
+import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -27,7 +30,7 @@ import library.model.User;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 //	UserController us = new UserController(new MySQLConnector());
 //	
 //	System.out.println(us.getUserById(2).getType());
@@ -41,20 +44,21 @@ public class Main {
 //	}
 		
 		
-//		MessageDigest md5 = null;
-//		String str = "";
-//		try {
-//			md5 = MessageDigest.getInstance("MD5");
-//		} catch (NoSuchAlgorithmException e) {
-//
-//			e.printStackTrace();
-//		}
-//		md5.update(StandardCharsets.UTF_8.encode("adminsolevoy"));
-//		str =  String.format("%032x", new BigInteger(md5.digest()));
-		
-		
+		MessageDigest md5 = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+		}
+		md5.update(StandardCharsets.UTF_8.encode("catsolevoy"));
+		String str =  String.format("%032x", new BigInteger(md5.digest()));
+		System.out.println(str);
+//		
 //		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
-//		//UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("userController");
+//		UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("controllerUser");
+//		System.out.println(us.validateUser("admin@admin", "adminsolevoy"));
+		//us.insertUser("sobaka", "sobaka", "sobaka@sobaka", "sobaka", "sobaka", "sobaka", "sobaka");
 //		UserController uc= (UserController) ac.getBean("controllerUser");
 //		System.out.println(uc.getUserById(1).getType());
 		
@@ -87,6 +91,8 @@ public class Main {
 		
 //			User user = us.getUserByEmail("daniel.protsak@gmail.com");
 //			System.out.println(user.getType());
+		
+		
 	
 	}
 

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 public class MySQLConnector {
+	
 	private DataSource dataSource;
 	public MySQLConnector() {	
 	}
@@ -16,7 +17,4 @@ public class MySQLConnector {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
-
-	
 }

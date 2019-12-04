@@ -1,7 +1,9 @@
 package library.servlet;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,11 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import config.ControllerConfig;
+import library.controller.BookController;
 import library.controller.UserController;
+import library.model.Book;
 import library.model.User;
 
 @Controller
@@ -158,14 +163,28 @@ public class DispatcherController {
 	@GetMapping(value = "/Logout", params = {"logout"})
 	public String userLogout(@RequestParam(name = "logout",required = false) String logout) 
 	{
-		context = new ClassPathXmlApplicationContext("connection-config.xml");
-		UserController uc = (UserController) context.getBean("controllerUser");
-		uc.invalidateUser(getSession());
+		UserController.invalidateUser(getSession());
 		return "redirect:/Max/MainPage.php";
 	}
 	
+	@GetMapping("/BookAjax")
+	@ResponseBody
+	public List<Book> bookAjaxGet() throws SQLException
+	{
+		if(dbContext == null)
+			dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
+		BookController bc = (BookController) dbContext.getBean("controllerBook");
+		
+		return bc.getAllBooks();
+	}
 	
 	
+	@GetMapping(value = "/SingleBookPage", params= {"bookId"})
+	public String singleBookPageGet(ModelMap mp, @RequestParam String bookId) 
+	{
+		
+		return "single-page";
+	}
 	public static HttpSession getSession() {
 	    ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 	    return attr.getRequest().getSession();

@@ -7,7 +7,7 @@
 			var promise = new Promise(function(resolve,reject){
 				$.ajax({
 
-				url: "/Laba2Library/BookServlet",
+				url: "/Laba2Library/Max/BookAjax.php",
 				method: "GET",
 				data: "",
 				error: function(message){

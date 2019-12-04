@@ -3,23 +3,25 @@ function down(e){
 	var child = e.target;
 	if(child==null)
 		return;
-	
-	if (child.firstElementChild.classList.contains("dropDownHide"))
+	if(child.firstElementChild != null)
 	{
-		child.firstElementChild.classList.remove("dropDownHide");
-		child.firstElementChild.classList.add("dropDownShow");
-		if(child.firstElementChild.classList.contains("dropDownShow"))
+		if (child.firstElementChild.classList.contains("dropDownHide"))
 		{
-				$(child.firstElementChild).mouseover(function(){
-
 			child.firstElementChild.classList.remove("dropDownHide");
 			child.firstElementChild.classList.add("dropDownShow");
-	});
-				$(child.firstElementChild).mouseout(function(){
+			if(child.firstElementChild.classList.contains("dropDownShow"))
+			{
+					$(child.firstElementChild).mouseover(function(){
 
-			child.firstElementChild.classList.remove("dropDownShow");
-			child.firstElementChild.classList.add("dropDownHide");
-	});
+				child.firstElementChild.classList.remove("dropDownHide");
+				child.firstElementChild.classList.add("dropDownShow");
+		});
+					$(child.firstElementChild).mouseout(function(){
+
+				child.firstElementChild.classList.remove("dropDownShow");
+				child.firstElementChild.classList.add("dropDownHide");
+		});
+			}
 		}
 	}
 }
@@ -29,10 +31,13 @@ function up(e){
 	if(child==null)
 		return;
 
-	if(child.firstElementChild.classList.contains("dropDownShow"))
+	if(child.firElementChild != null)
 	{
-		child.firstElementChild.classList.remove("dropDownShow");
-		child.firstElementChild.classList.add("dropDownHide");
+		if(child.firstElementChild.classList.contains("dropDownShow"))
+		{
+			child.firstElementChild.classList.remove("dropDownShow");
+			child.firstElementChild.classList.add("dropDownHide");
+		}
 	}
 	
 }

@@ -22,6 +22,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.google.gson.Gson;
+
 import config.ControllerConfig;
 import library.controller.BookController;
 import library.controller.UserController;
@@ -44,18 +46,22 @@ public class Main {
 //	}
 		
 		
-		MessageDigest md5 = null;
-		try {
-			md5 = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-
-			e.printStackTrace();
-		}
-		md5.update(StandardCharsets.UTF_8.encode("catsolevoy"));
-		String str =  String.format("%032x", new BigInteger(md5.digest()));
-		System.out.println(str);
+//		MessageDigest md5 = null;
+//		try {
+//			md5 = MessageDigest.getInstance("MD5");
+//		} catch (NoSuchAlgorithmException e) {
+//
+//			e.printStackTrace();
+//		}
+//		md5.update(StandardCharsets.UTF_8.encode("catsolevoy"));
+//		String str =  String.format("%032x", new BigInteger(md5.digest()));
+//		System.out.println(str);
+		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
+		Gson gson = new Gson();
+		BookController bc = (BookController) ac.getBean("controllerBook");
+		String json = gson.toJson(bc.getAllBooks());
+		System.out.println(json);
 //		
-//		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
 //		UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("controllerUser");
 //		System.out.println(us.validateUser("admin@admin", "adminsolevoy"));
 		//us.insertUser("sobaka", "sobaka", "sobaka@sobaka", "sobaka", "sobaka", "sobaka", "sobaka");

@@ -1,43 +1,35 @@
 function down(e){
 
-	var child = e.target.firstElementChild;
-	if(child==null)
-		return;
-	
-	if (child.classList.contains("dropDownHide"))
+	var child = e.target;
+	if(child.firstElementChild != null)
 	{
-		child.classList.remove("dropDownHide");
-		child.classList.add("dropDownShow");
-		if(child.classList.contains("dropDownShow"))
+		if (child.firstElementChild.classList.contains("dropDownHide"))
 		{
-				$(child).mouseover(function(){
+			child.firstElementChild.classList.remove("dropDownHide");
+			child.firstElementChild.classList.add("dropDownShow");
+			if(child.firstElementChild.classList.contains("dropDownShow"))
+			{
+					$(child.firstElementChild).mouseover(function(){
 
-			child.classList.remove("dropDownHide");
-			child.classList.add("dropDownShow");
-	});
-				$(child).mouseout(function(){
+				child.firstElementChild.classList.remove("dropDownHide");
+				child.firstElementChild.classList.add("dropDownShow");
+		});
+					$(child.firstElementChild).mouseout(function(){
 
-			child.classList.remove("dropDownShow");
-			child.classList.add("dropDownHide");
-	});
+				child.firstElementChild.classList.remove("dropDownShow");
+				child.firstElementChild.classList.add("dropDownHide");
+		});
+			}
+		$(child).mouseout(function(){
+
+				child.firstElementChild.classList.remove("dropDownShow");
+				child.firstElementChild.classList.add("dropDownHide");
+		});
 		}
 	}
 }
-function up(e){
-	var child = e.target.firstElementChild;
 
-	if(child==null)
-		return;
-
-	if(child.classList.contains("dropDownShow"))
-	{
-		child.classList.remove("dropDownShow");
-		child.classList.add("dropDownHide");
-	}
-	
-}
-var catchTarget = document.querySelector(".nav-buttons");
+var catchTarget = document.querySelector(".row.main-row-1");
 $(catchTarget).mouseover(down);
 
-  $(catchTarget).mouseout(up);
 

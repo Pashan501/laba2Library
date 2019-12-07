@@ -2,14 +2,61 @@
 
 var BookView = {
 
-	render: function(book,element){
+	render: function(book,element,type){
 		if(element.children.length  < 4){
+			
 			var book1Colum = document.createElement("div");
 			book1Colum.classList.add("col-4");
 
 			var book1Container = document.createElement("div");
 			book1Container.classList.add("book-container");
 			var bookImg = document.createElement("img");
+			
+
+			if(type == "admin"){
+				var deleteButton = document.createElement("i");
+					deleteButton.classList.add("fas");
+					deleteButton.classList.add("fa-trash-alt");
+					deleteButton.classList.add("delete-button-hover");
+					deleteButton.style.color = "white";
+					deleteButton.style.display = "flex";
+					deleteButton.style.justifyContent = "center";
+					deleteButton.style.alignItems = "center";
+					deleteButton.style.position = "relative";
+					deleteButton.style.top = "50px";
+					var hiddenId = document.createElement("input");
+			hiddenId.setAttribute("type","hidden");
+			hiddenId.setAttribute("value",book.id);
+
+					function remove(){
+						var agreement = confirm("Are you sure you want to delete the book " + book.name + " ?");
+						if(agreement){
+
+							console.log(hiddenId.getAttribute("value"));
+							window.BookList.removeBookById(hiddenId.getAttribute("value"));
+							window.location.reload();
+						}
+					};
+				
+				var photoBookDivWithParams = document.createElement("div");
+				bookImg.addEventListener("mouseover",function(e){
+					photoBookDivWithParams.style.position = "absolute";
+					photoBookDivWithParams.style.width = bookImg.width;
+					photoBookDivWithParams.style.height = bookImg.height;
+					photoBookDivWithParams.style.background = "rgb(0,0,0,0.5)";
+					deleteButton.addEventListener("click",remove);
+					photoBookDivWithParams.appendChild(deleteButton);
+					book1Container.appendChild(photoBookDivWithParams);
+					book1Container.appendChild(hiddenId);
+				});
+
+
+				photoBookDivWithParams.addEventListener("mouseout",function(e){
+					book1Container.removeChild(photoBookDivWithParams);
+					book1Container.removeChild(hiddenId);
+				});
+
+			}
 			bookImg.setAttribute("src",book.imgSource);
 			bookImg.classList.add("book-img-size");
 			var bookLinkingName = document.createElement("a");

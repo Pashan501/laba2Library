@@ -13,12 +13,64 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import library.fabric.MySQLConnector;
 import library.model.User;
 
-public class UserController {
+/** 
+* 
+* @author Daniel 
+*/
 
+public class UserController {
+	/** 
+	* This is user controller. 
+	    * @param connector 
+	*/
+	@Autowired
 	private MySQLConnector connector;
+
+	public MySQLConnector getConnector() {
+		return connector;
+	}
+
+
+	public void setConnector(MySQLConnector connector) {
+		this.connector = connector;
+	}
+
+
+	public Statement getStatement() {
+		return statement;
+	}
+
+
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+
+
+	public PreparedStatement getPs() {
+		return ps;
+	}
+
+
+	public void setPs(PreparedStatement ps) {
+		this.ps = ps;
+	}
+
+
+	public String getSalt() {
+		return salt;
+	}
+
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 
 	private Statement statement;
 	private PreparedStatement ps;
@@ -26,26 +78,26 @@ public class UserController {
 	
 	
 
-	public UserController(MySQLConnector conn) 
+	public UserController() 
 	{
-		this.connector = conn;
+		
 	}
 
 	
-	public void insertUser(String name,String surname, String email, String pass, String country, String city, String street) {
+	public void insertUser(String name,String surName,String email,String country,String city,String street,String password) {
 		
-		String INSERT_USER = "INSERT INTO users(name,surName,email, country, city , street , password, type)"+ 
+		String INSERT_USER = "INSERT INTO user(name,surName,email, country, city , street , password, type)"+ 
 				"VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
-			ps = connector.getConnection().prepareStatement(INSERT_USER);
+			ps = connector.getDataSource().getConnection().prepareStatement(INSERT_USER);
 			ps.setString(1, name);
-			ps.setString(2, surname);
+			ps.setString(2, surName);
 			ps.setString(3, email);
 			ps.setString(4, country);
 			ps.setString(5, city);
 			ps.setString(6, street);
-			ps.setString(7, pass);
+			ps.setString(7, hashString(password+salt));
 			ps.setString(8, "user");
 			ps.execute();
 		} catch (SQLException e) {
@@ -59,9 +111,9 @@ public class UserController {
 	public User getUserById(int id) 
 	{
 		User user = null;
-		String GET_USER_BY_ID = "SELECT * FROM User WHERE id="+id+";";
+		String GET_USER_BY_ID = "SELECT * FROM user WHERE id="+id+";";
 		try {
-			statement = connector.getConnection().createStatement();
+			statement = connector.getDataSource().getConnection().createStatement();
 			ResultSet rs= statement.executeQuery(GET_USER_BY_ID);
 			while(rs.next()) 
 			{
@@ -88,7 +140,7 @@ public class UserController {
 		User user = null;
 		String GET_USER_BY_EMAIL = "SELECT * FROM user WHERE email='"+email+"';";
 		try {
-			statement = connector.getConnection().createStatement();
+			statement = connector.getDataSource().getConnection().createStatement();
 			ResultSet rs= statement.executeQuery(GET_USER_BY_EMAIL);
 			while(rs.next()) 
 			{
@@ -118,16 +170,15 @@ public class UserController {
 	{
 		User user = null;
 		String GET_USER_BY_EMAIL_AND_PASSWORD = "SELECT email, password FROM user WHERE email = ? AND password = ?";
-		ps = connector.getConnection().prepareStatement(GET_USER_BY_EMAIL_AND_PASSWORD);
+		ps = connector.getDataSource().getConnection().prepareStatement(GET_USER_BY_EMAIL_AND_PASSWORD);
 		ps.setString(1, email);
-		ps.setString(2, hashString(password));
-		System.out.println(hashString(password));
+		ps.setString(2, hashString(password+salt));
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) 
 		{
-			System.out.println("PROVERKA");
 			user = getUserByEmail(rs.getString(1));
 		}
+		
 		return user;
 		
 	}
@@ -148,7 +199,7 @@ public class UserController {
 
 			e.printStackTrace();
 		}
-		md5.update(StandardCharsets.UTF_8.encode(hash+salt));
+		md5.update(StandardCharsets.UTF_8.encode(hash+getSalt()));
 		return String.format("%032x", new BigInteger(md5.digest()));
 
 	}

@@ -18,7 +18,7 @@ public class BookController {
 
 	private Statement statement;
 	private PreparedStatement ps;
-	
+	private static final String DELETE_BOOK_BY_ID = "DELETE FROM `books` WHERE id = ?";
 	
 	public BookController() 
 	{
@@ -68,6 +68,13 @@ public class BookController {
 			}
 		return list;
 		
+	}
+	
+	public void deleteBookById(int id) throws SQLException 
+	{
+		ps = getConnector().getDataSource().getConnection().prepareStatement(DELETE_BOOK_BY_ID);
+		ps.setString(1, String.valueOf(id));
+		ps.execute();
 	}
 	
 }

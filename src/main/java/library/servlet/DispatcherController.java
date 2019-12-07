@@ -1,27 +1,34 @@
 package library.servlet;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -30,6 +37,7 @@ import library.controller.BookController;
 import library.controller.UserController;
 import library.model.Book;
 import library.model.User;
+import library.parser.JsonParser;
 
 @Controller
 @RequestMapping("/Max")
@@ -178,6 +186,23 @@ public class DispatcherController {
 		return bc.getAllBooks();
 	}
 	
+	
+	@PostMapping(value = "/BookAjax",consumes = "application/json")
+	@ResponseStatus(value = HttpStatus.OK)
+	public  void bookAjaxPost(@RequestBody Book book) throws IOException 
+	{
+		
+		System.out.println("Proverka 1 ID: " + book.getId());
+		BookController bc = (BookController) dbContext.getBean("controllerBook");
+		System.out.println("Proverka 2  ID: " + book.getId());
+		try {
+			bc.deleteBookById(book.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		
+	}
 	
 	@GetMapping(value = "/SingleBookPage", params= {"bookId"})
 	public String singleBookPageGet(ModelMap mp, @RequestParam String bookId) 

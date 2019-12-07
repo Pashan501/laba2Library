@@ -28,6 +28,7 @@ import config.ControllerConfig;
 import library.controller.BookController;
 import library.controller.UserController;
 import library.fabric.MySQLConnector;
+import library.model.Book;
 import library.model.User;
 
 public class Main {
@@ -59,8 +60,9 @@ public class Main {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
 		Gson gson = new Gson();
 		BookController bc = (BookController) ac.getBean("controllerBook");
-		String json = gson.toJson(bc.getAllBooks());
-		System.out.println(json);
+		String json = gson.toJson(bc.getAllBooks().get(1));
+		Book book = gson.fromJson(json, Book.class);
+		System.out.println(book.getDescription());
 //		
 //		UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("controllerUser");
 //		System.out.println(us.validateUser("admin@admin", "adminsolevoy"));

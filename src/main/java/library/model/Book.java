@@ -7,14 +7,18 @@ public class Book {
 	private String genre;
 	private String authorName;
 	private String description;
+	private int year;
 	private String imgSource;
 	
-	public Book(int id, String name, String genre, String authorName,String description,String imgSource) {
+	
+	public Book() {}
+	public Book(int id, String name, String genre, String authorName,String description,int year,String imgSource) {
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 		this.authorName = authorName;
 		this.description = description;
+		this.year = year;
 		this.imgSource = imgSource;
 	}
 
@@ -77,6 +81,16 @@ public class Book {
 
 	public void setImgSource(String imgSource) {
 		this.imgSource = imgSource;
+	}
+
+
+	public int getYear() {
+		return year;
+	}
+
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 	

@@ -11,7 +11,9 @@ var BookView = {
 			var book1Container = document.createElement("div");
 			book1Container.classList.add("book-container");
 			var bookImg = document.createElement("img");
-			
+			var hiddenId = document.createElement("input");
+			hiddenId.setAttribute("type","hidden");
+			hiddenId.setAttribute("value",book.id);
 
 			if(type == "admin"){
 				var deleteButton = document.createElement("i");
@@ -24,9 +26,6 @@ var BookView = {
 					deleteButton.style.alignItems = "center";
 					deleteButton.style.position = "relative";
 					deleteButton.style.top = "50px";
-					var hiddenId = document.createElement("input");
-			hiddenId.setAttribute("type","hidden");
-			hiddenId.setAttribute("value",book.id);
 
 					function remove(){
 						var agreement = confirm("Are you sure you want to delete the book " + book.name + " ?");
@@ -61,7 +60,7 @@ var BookView = {
 			bookImg.classList.add("book-img-size");
 			var bookLinkingName = document.createElement("a");
 			bookLinkingName.textContent = book.name;
-			bookLinkingName.setAttribute("href","");
+			bookLinkingName.setAttribute("href","/Laba2Library/Max/SingleBookPage.php?bookId="+hiddenId.getAttribute("value"));
 			book1Container.appendChild(bookImg);
 			book1Container.appendChild(bookLinkingName);
 			book1Colum.appendChild(book1Container);

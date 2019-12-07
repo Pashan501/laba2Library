@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -205,10 +206,17 @@ public class DispatcherController {
 	}
 	
 	@GetMapping(value = "/SingleBookPage", params= {"bookId"})
-	public String singleBookPageGet(ModelMap mp, @RequestParam String bookId) 
+	public String singleBookPageGet(ModelMap mp, @RequestParam String bookId) throws BeansException, NumberFormatException, SQLException 
 	{
-		
-		return "single-page";
+		Book book = ((BookController) dbContext.getBean("controllerBook")).getBookById(Integer.parseInt(bookId));
+		mp.addAttribute("name",book.getName());
+		mp.addAttribute("genre",book.getGenre());
+		mp.addAttribute("authorName",book.getAuthorName());
+		mp.addAttribute("description",book.getDescription());
+		mp.addAttribute("year",book.getYear());
+		mp.addAttribute("imageSource",book.getImgSource());
+		mp.addAttribute("session",getSession());
+		return "book_info";
 	}
 	public static HttpSession getSession() {
 	    ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();

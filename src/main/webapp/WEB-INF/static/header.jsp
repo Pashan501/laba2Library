@@ -32,8 +32,13 @@
 							</ul>
 						</span>
 					</div>
-					<div class="col-6 " id = "search-wrapper" name = "search">
-						<input type="text"  id="myInput" placeholder="Search">
+					<div class="col-6 " id="search-wrapper" name="search">
+						<input type="text" id="myInput" placeholder="Search" name="searching">
+							<div class="search-button">
+								<a onclick="window.BookView.clear();window.BookList.getBookBySearch(document.querySelector('#myInput')).then(function(list){
+									window.BookListView.renderAll(list,document.querySelector('.row.first-row-in-main-page'), '${sessionScope.user.type}');
+								});"><i class="fas fa-search"></i></a>
+							</div>
 					</div>
 					<c:choose>
 							<c:when test='${sessionScope.user == null}'>

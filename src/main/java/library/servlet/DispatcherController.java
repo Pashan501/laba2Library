@@ -51,7 +51,7 @@ import library.parser.JsonParser;
 public class DispatcherController {
 
 	private ApplicationContext context;
-	private ApplicationContext dbContext;
+	private ApplicationContext dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
 	
 	
 	@GetMapping(value = "/Login")
@@ -65,7 +65,6 @@ public class DispatcherController {
 	@PostMapping(value = "/Login",params = {"email","password"})
 	public String loginPost(ModelMap mp,@RequestParam("email")String email,@RequestParam("password")String password,HttpServletRequest request) throws SQLException 
 	{
-		dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
 		String page = "login-page";
 		User user = ((UserController) dbContext.getBean("controllerUser")).validateUser(email, password);
 		if(user != null) 
@@ -149,8 +148,6 @@ public class DispatcherController {
 			mp.addAttribute("error",error);
 		}else 
 		{
-			if(dbContext == null)
-				dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
 			UserController uc = (UserController) dbContext.getBean("controllerUser");
 			uc.insertUser(name,surName, email, country, city, street, password);
 			form = false;
@@ -165,9 +162,12 @@ public class DispatcherController {
 	@GetMapping("/MainPage")
 	public String mainPageGet(ModelMap mp) 
 	{
+		
 		mp.addAttribute("session",getSession());
 		return "main-page";
 	}
+	
+	
 	
 	@GetMapping("/ErrorPage")
 	public String error403Forbidden() 
@@ -184,13 +184,16 @@ public class DispatcherController {
 	
 	@GetMapping("/BookAjax")
 	@ResponseBody
-	public List<Book> bookAjaxGet() throws SQLException
+	public List<Book> bookAjaxGet(@RequestParam(value = "search", required=false) String search) throws SQLException
 	{
-		if(dbContext == null)
-			dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
-		BookController bc = (BookController) dbContext.getBean("controllerBook");
+		List<Book> list = null;
+		BookController bc = (BookController) dbContext.getBean("controllerBook");	
+		if(search != null )
+			list = bc.getBooksMySearch(search);
+		else
+			list = bc.getAllBooks();
 		
-		return bc.getAllBooks();
+		return list;
 	}
 	
 	
@@ -199,9 +202,7 @@ public class DispatcherController {
 	public  void bookAjaxPost(@RequestBody Book book) throws IOException 
 	{
 		
-		System.out.println("Proverka 1 ID: " + book.getId());
 		BookController bc = (BookController) dbContext.getBean("controllerBook");
-		System.out.println("Proverka 2  ID: " + book.getId());
 		try {
 			bc.deleteBookById(book.getId());
 		} catch (SQLException e) {

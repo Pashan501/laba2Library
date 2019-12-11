@@ -319,3 +319,12 @@ footer
 {
 	margin-bottom:10px;
 }
+.search-button
+{
+	background-color:white;
+	width: 26px;
+	border-radius: 10px;
+	right: 27px;
+	position: relative;
+	height: 27px;
+}

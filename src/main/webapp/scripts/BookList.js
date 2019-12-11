@@ -3,6 +3,28 @@
 	var BookList = {
 		listBooks : undefined,
 
+
+		getBookBySearch: async function(search){
+			var promise = new Promise(function(resolve,reject){
+				$.ajax({
+
+				url: "/Laba2Library/Max/BookAjax.php?search="+search.value,
+				method: "GET",
+				data: "",
+				error: function(message){
+					console.log("ERROR");
+				},
+
+				success : function(data){
+					resolve(data);
+				},
+			});
+
+			});
+
+			this.listBooks = await promise;
+			return promise;
+		},
 		getAllBooks : async function(){
 			var promise = new Promise(function(resolve,reject){
 				$.ajax({

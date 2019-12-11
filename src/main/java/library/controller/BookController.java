@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,6 +23,7 @@ public class BookController {
 	private static final String GET_BOOK_BY_ID = "SELECT * FROM `books` WHERE id = ?";
 	private static final String UPDATE_BOOK = "UPDATE `books` SET `Name` = ? , `Genre` = ?, `AuthorName` = ?, "
 			+ "`Description` = ? , `year` = ?, `img-source` = ? WHERE `books`.`id` = 1;";
+	private static final String SEARCH_BOOK_BY_NAME = "SELECT * FROM `books` WHERE `books`.`Name` LIKE '%' ? '%';";
 	
 	public BookController() 
 	{
@@ -110,6 +112,21 @@ public class BookController {
 		ps.setInt(5, book.getYear());
 		ps.setString(6, book.getImgSource());
 		ps.execute();
+	}
+	
+	public List<Book> getBooksMySearch(String searchString) throws SQLException
+	{
+		List<Book> list = new ArrayList<>();
+		ps = connector.getDataSource().getConnection().prepareStatement(SEARCH_BOOK_BY_NAME);
+		ps.setString(1, searchString);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) 
+		{
+			list.add(new Book(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
+					rs.getString(5),rs.getInt(6),rs.getString(7)));
+		}
+		
+		return list;
 	}
 	
 }

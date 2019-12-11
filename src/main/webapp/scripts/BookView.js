@@ -107,7 +107,19 @@ var BookView = {
 				this.render(book,newRow,type);
 			}
 		}
-	}
+	},
+
+	clear:function(){
+		var mainPageContainer = document.querySelector(".container.main-page-container");
+  				while (mainPageContainer.firstChild) {
+    				mainPageContainer.removeChild(mainPageContainer.firstChild);
+  				}
+  				var row = document.createElement("div");
+  				row.classList.add("row");
+  				row.classList.add("first-row-in-main-page");
+  				mainPageContainer.appendChild(row);
+			}
+
 }
 
 window.BookView = BookView;

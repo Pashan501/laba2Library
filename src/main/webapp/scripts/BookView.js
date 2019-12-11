@@ -3,8 +3,8 @@
 var BookView = {
 
 	render: function(book,element,type){
-		if(element.children.length  < 4){
-			
+		if(element.children.length  != 3){
+			console.log("HUY");
 			var book1Colum = document.createElement("div");
 			book1Colum.classList.add("col-4");
 
@@ -27,6 +27,31 @@ var BookView = {
 					deleteButton.style.position = "relative";
 					deleteButton.style.top = "50px";
 
+				var editButton = document.createElement("i");
+					editButton.classList.add("far");
+					editButton.classList.add("fa-edit");
+					editButton.style.color = "white";
+					editButton.style.display = "flex";
+					editButton.style.justifyContent = "center";
+					editButton.style.alignItems = "center";
+					editButton.style.position = "relative";
+					editButton.style.top = "70px";
+
+					function editModalBook(){
+						window.BookEditView.editBook(hiddenId.getAttribute("value"),document.querySelector("#main"));
+						var modal = document.querySelector(".modal");
+						modal.style.display = "block";
+						var closeButton = modal.querySelector(".close");
+						closeButton.addEventListener("click",function(){
+							modal.style.display = "none";
+							window.BookEditView.clear(document.querySelector("#main"));
+						})
+					}
+
+					function closeModal(){
+
+					}
+
 					function remove(){
 						var agreement = confirm("Are you sure you want to delete the book " + book.name + " ?");
 						if(agreement){
@@ -44,7 +69,9 @@ var BookView = {
 					photoBookDivWithParams.style.height = bookImg.height;
 					photoBookDivWithParams.style.background = "rgb(0,0,0,0.5)";
 					deleteButton.addEventListener("click",remove);
+					editButton.addEventListener("click",editModalBook);
 					photoBookDivWithParams.appendChild(deleteButton);
+					photoBookDivWithParams.appendChild(editButton);
 					book1Container.appendChild(photoBookDivWithParams);
 					book1Container.appendChild(hiddenId);
 				});
@@ -66,14 +93,18 @@ var BookView = {
 			book1Colum.appendChild(book1Container);
 			element.appendChild(book1Colum);
 		}else{
-			if(element.nextSibling != null){
-				this.render(book,element.nextSibling);
+
+
+			if(element.nextElementSibling != null){
+
+				this.render(book,element.nextElementSibling,type);
 			}else{
 				var mainPageContainer = document.querySelector(".container.main-page-container");
-				var row = document.createElement("div");
-				row.classList.add("row");
-				mainPageContainer.appendChild(row);
-				this.render(book,row);
+				var newRow = document.createElement("div");
+				newRow.classList.add("row");
+				newRow.classList.add("first-row-in-main-page");
+				mainPageContainer.appendChild(newRow);
+				this.render(book,newRow,type);
 			}
 		}
 	}

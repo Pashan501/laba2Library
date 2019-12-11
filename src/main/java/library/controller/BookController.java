@@ -20,6 +20,8 @@ public class BookController {
 	private PreparedStatement ps;
 	private static final String DELETE_BOOK_BY_ID = "DELETE FROM `books` WHERE id = ?";
 	private static final String GET_BOOK_BY_ID = "SELECT * FROM `books` WHERE id = ?";
+	private static final String UPDATE_BOOK = "UPDATE `books` SET `Name` = ? , `Genre` = ?, `AuthorName` = ?, "
+			+ "`Description` = ? , `year` = ?, `img-source` = ? WHERE `books`.`id` = 1;";
 	
 	public BookController() 
 	{
@@ -95,6 +97,18 @@ public class BookController {
 	{
 		ps = getConnector().getDataSource().getConnection().prepareStatement(DELETE_BOOK_BY_ID);
 		ps.setString(1, String.valueOf(id));
+		ps.execute();
+	}
+	
+	public void updateBook(Book book) throws SQLException 
+	{
+		ps = connector.getDataSource().getConnection().prepareStatement(UPDATE_BOOK);
+		ps.setString(1, book.getName());
+		ps.setString(2, book.getGenre());
+		ps.setString(3, book.getAuthorName());
+		ps.setString(4, book.getDescription());
+		ps.setInt(5, book.getYear());
+		ps.setString(6, book.getImgSource());
 		ps.execute();
 	}
 	

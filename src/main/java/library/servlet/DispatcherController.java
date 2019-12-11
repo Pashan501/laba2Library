@@ -1,6 +1,10 @@
 package library.servlet;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
@@ -32,6 +36,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import config.ControllerConfig;
 import library.controller.BookController;
@@ -218,6 +224,49 @@ public class DispatcherController {
 		mp.addAttribute("session",getSession());
 		return "book_info";
 	}
+	
+	@PostMapping(value = "/EditBook",params = {"bookId","name","description","genre","authorName","year"})
+	public String upload(@RequestParam(required=false) CommonsMultipartFile  file,
+			@RequestParam("name") String name, @RequestParam("description") String description,
+			@RequestParam("genre") String genre, @RequestParam("authorName") String authorName,
+			@RequestParam("year") String year, @RequestParam("bookId") String bookId,
+			@RequestParam(value = "check", required=false) String check) throws BeansException, NumberFormatException, SQLException, IOException 
+	{
+		BookController bc = (BookController) dbContext.getBean("controllerBook");
+		String path=getSession().getServletContext().getRealPath("/");  
+		Book book = bc.getBookById(Integer.parseInt(bookId));
+		book.setName(name);
+		book.setDescription(description);
+		book.setGenre(genre);
+		book.setAuthorName(authorName);
+		book.setYear(Integer.parseInt(year));
+		if(check == null && file.getOriginalFilename().length() > 1) 
+		{
+			if(file.getOriginalFilename().endsWith(".jpg") || file.getOriginalFilename().endsWith(".png")) 
+			{
+				File fileWrite = new File(path + "img-books/"+file.getOriginalFilename());
+				if(fileWrite.exists()) // проверяю на существования файла в папки, чтобы его заново не переписывать
+					book.setImgSource("../img-books/"+file.getOriginalFilename());
+				else 
+				{
+					byte bytes[] = file.getBytes();
+					FileOutputStream fos = new FileOutputStream(fileWrite);
+					fos.write(bytes);
+					fos.flush();
+					fos.close();
+					book.setImgSource("../img-books/"+file.getOriginalFilename());
+				}
+			}
+		}else
+			if(check != null) 
+			{
+				book.setImgSource(" ");
+			}
+	bc.updateBook(book);
+	
+		return "redirect:/Max/MainPage.php";
+	}
+	
 	public static HttpSession getSession() {
 	    ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 	    return attr.getRequest().getSession();

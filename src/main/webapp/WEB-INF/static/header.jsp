@@ -23,15 +23,28 @@
 							</ul>
 						</span>
 					</div>
+					<c:choose>
+						<c:when test='${sessionScope.user != null && sessionScope.user.type != "admin"}'>
 					<div class="col-2 choosing-nav">
 						<span class="nav-buttons">My Books
 							<ul class="lists dropDownHide">
-   							<li class="nav-buttons"><a href="#">Penis</a></li>
+   							<li class="nav-buttons"><a href="#">Order History</a></li>
    							<li class="nav-buttons"><a href="#">Biographies</a></li>
    							<li class="nav-buttons"><a href="#">Romance</a></li>
 							</ul>
 						</span>
 					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="col-2 choosing-nav">
+						<span class="nav-buttons">Options
+							<ul class="lists dropDownHide">
+   							<li class="nav-buttons"><a href="#">Create Book</a></li>
+							</ul>
+						</span>
+					</div>
+				</c:otherwise>
+					</c:choose>
 					<div class="col-6 " id="search-wrapper" name="search">
 						<input type="text" id="myInput" placeholder="Search" name="searching">
 							<div class="search-button">

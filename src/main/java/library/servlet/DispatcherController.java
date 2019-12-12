@@ -233,6 +233,7 @@ public class DispatcherController {
 			@RequestParam("year") String year, @RequestParam("bookId") String bookId,
 			@RequestParam(value = "check", required=false) String check) throws BeansException, NumberFormatException, SQLException, IOException 
 	{
+		System.out.println(bookId);
 		BookController bc = (BookController) dbContext.getBean("controllerBook");
 		String path=getSession().getServletContext().getRealPath("/");  
 		Book book = bc.getBookById(Integer.parseInt(bookId));
@@ -267,6 +268,8 @@ public class DispatcherController {
 	
 		return "redirect:/Max/MainPage.php";
 	}
+	
+	
 	
 	public static HttpSession getSession() {
 	    ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();

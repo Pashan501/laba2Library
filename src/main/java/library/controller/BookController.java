@@ -22,7 +22,7 @@ public class BookController {
 	private static final String DELETE_BOOK_BY_ID = "DELETE FROM `books` WHERE id = ?";
 	private static final String GET_BOOK_BY_ID = "SELECT * FROM `books` WHERE id = ?";
 	private static final String UPDATE_BOOK = "UPDATE `books` SET `Name` = ? , `Genre` = ?, `AuthorName` = ?, "
-			+ "`Description` = ? , `year` = ?, `img-source` = ? WHERE `books`.`id` = 1;";
+			+ "`Description` = ? , `year` = ?, `img-source` = ? WHERE `books`.`id` = ?;";
 	private static final String SEARCH_BOOK_BY_NAME = "SELECT * FROM `books` WHERE `books`.`Name` LIKE '%' ? '%';";
 	
 	public BookController() 
@@ -111,6 +111,7 @@ public class BookController {
 		ps.setString(4, book.getDescription());
 		ps.setInt(5, book.getYear());
 		ps.setString(6, book.getImgSource());
+		ps.setInt(7,book.getId());
 		ps.execute();
 	}
 	

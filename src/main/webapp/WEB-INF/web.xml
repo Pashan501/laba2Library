@@ -13,8 +13,22 @@
 		<param-value>1</param-value>
 		</init-param>
 	</filter>
+	<filter>
+		<filter-name>FilterLoginUser</filter-name>
+		<display-name>FilterLoginUser</display-name>
+		<description></description>
+		<filter-class>library.filter.FilterLoginUser</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>Filter403</filter-name>
+		<url-pattern>/Max/Login.php</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Filter403</filter-name>
+		<url-pattern>/Max/Register.php</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>FilterLoginUser</filter-name>
 		<url-pattern>/Max/Login.php</url-pattern>
 	</filter-mapping>
   

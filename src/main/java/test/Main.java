@@ -60,7 +60,11 @@ public class Main {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("connection-config.xml");
 		Gson gson = new Gson();
 		BookController bc = (BookController) ac.getBean("controllerBook");
-		System.out.println(bc.getBooksMySearch("witcher").get(0).getName());
+		//System.out.println(bc.getBookById(1).getName());
+		Book book = bc.getBookById(2);
+		book.setName("Pussy");
+		bc.updateBook(book);
+		System.out.println(bc.getBookById(2).getName());
 //		
 //		UserController us = (UserController) new ClassPathXmlApplicationContext("connection-config.xml").getBean("controllerUser");
 //		System.out.println(us.validateUser("admin@admin", "adminsolevoy"));

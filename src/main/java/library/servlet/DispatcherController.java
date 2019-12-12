@@ -271,6 +271,8 @@ public class DispatcherController {
 	
 	
 	
+	
+	
 	public static HttpSession getSession() {
 	    ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 	    return attr.getRequest().getSession();

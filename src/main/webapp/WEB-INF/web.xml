@@ -6,7 +6,7 @@
 	<filter>
 		<filter-name>Filter403</filter-name>
 		<display-name>Filter403</display-name>
-		<description></description>
+		<description/>
 		<filter-class>library.filter.Filter403</filter-class>
 		<init-param>
 		<param-name>param1</param-name>
@@ -16,7 +16,7 @@
 	<filter>
 		<filter-name>FilterLoginUser</filter-name>
 		<display-name>FilterLoginUser</display-name>
-		<description></description>
+		<description/>
 		<filter-class>library.filter.FilterLoginUser</filter-class>
 	</filter>
 	<filter-mapping>

@@ -51,7 +51,7 @@ import library.parser.JsonParser;
 public class DispatcherController {
 
 	private ApplicationContext context;
-	private ApplicationContext dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
+	private final ApplicationContext dbContext = new ClassPathXmlApplicationContext("connection-config.xml");
 	
 	
 	@GetMapping(value = "/Login")
@@ -269,8 +269,11 @@ public class DispatcherController {
 		return "redirect:/Max/MainPage.php";
 	}
 	
-	
-	
+	@GetMapping("/basketcase")
+	public String getBaksetPage()
+	{
+		return "basket-page";
+	}
 	
 	
 	public static HttpSession getSession() {

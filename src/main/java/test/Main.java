@@ -15,7 +15,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
-import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -101,8 +100,8 @@ public class Main {
 		
 //			User user = us.getUserByEmail("daniel.protsak@gmail.com");
 //			System.out.println(user.getType());
-		
-		
+
+		System.out.println("HELLO WORLD");
 	
 	}
 

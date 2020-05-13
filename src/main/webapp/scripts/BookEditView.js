@@ -1,7 +1,4 @@
 (function(){
-
-	
-	
 	var BookEditView = {
 
 			editBook : function(id,element){	
